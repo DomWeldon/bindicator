@@ -40,12 +40,7 @@ async def main(
             # Check the current RGB color
             current_color = dev.get_rgb_color()
             print(f"Device {dev.name} set to RGB {current_color}")
-            # Randomly chose a new color
-            rgb = (
-                random.randint(0, 255),
-                random.randint(0, 255),
-                random.randint(0, 255),
-            )
+            # set to next bins colour
             print(f"Chosen random color (R,G,B): {new_col}")
             await dev.async_set_light_color(rgb=new_col.value)
             print("Color changed!")
