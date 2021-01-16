@@ -9,7 +9,7 @@ locals {
     AWS_SECRET_ACCESS_KEY = aws_iam_access_key.ci.secret
     AWS_REGION            = var.aws_region
     # aws specific to branch
-    # "AWS_ROLE_ARN_${upper(var.environment_name)}" = aws_iam_role.ci.arn
+    "AWS_ROLE_ARN_${upper(var.environment_name)}" = aws_iam_role.ci.arn
     # preoject
     PROJECT_NAME = var.project_name
   }

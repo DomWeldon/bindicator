@@ -13,7 +13,7 @@ class Bins(enum.Enum):
     # bottles and cans, lovely lovely cans
     BROWN: typing.Tuple[int, int, int] = (255, 56, 0)
     # non-recyclable waste, using white as black not possible when on
-    BLACK: typing.Tuple[int, int, int] = (255, 255, 255)
+    BLACK: typing.Tuple[int, int, int] = (255, 0, 255)
 
 
 # hardcoding for tonight
