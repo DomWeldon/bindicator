@@ -13,5 +13,8 @@ module "bindicator_lambda" {
     ENVIRONMENT_NAME = var.environment_name
     # sentry
     SENTRY_DSN = sentry_key.asgi.dsn_public
+    # meross
+    MEROSS_EMAIL    = var.meross_email
+    MEROSS_PASSWORD = var.meross_password
   }]
 }

@@ -65,3 +65,12 @@ variable "sentry_team_slug" {
   type        = string
   description = "Sentry team slug"
 }
+
+# meross
+variable "meross_password" {
+  type = string
+}
+
+variable "meross_email" {
+  type = string
+}

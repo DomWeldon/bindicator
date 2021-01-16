@@ -4,7 +4,8 @@ import random
 from meross_iot.http_api import MerossHttpClient
 from meross_iot.manager import MerossManager
 
-from .config import config
+from bindicator.config import config
+from bindicator import bins
 
 
 async def main(
@@ -31,7 +32,10 @@ async def main(
     print("I've found the following devices:")
     for dev in meross_devices:
         print(f"- {dev.name} ({dev.type}): {dev.online_status}")
-        if dev.name == "Garage Bulb":
+        # down and dirty
+        if dev.name.startswith("Garage Bulb"):
+            ix = int(dev.name[-1]) - 1
+            new_col = bins.NEXT_BINS[ix]
             await dev.async_update()
             # Check the current RGB color
             current_color = dev.get_rgb_color()
@@ -44,8 +48,8 @@ async def main(
                 random.randint(0, 255),
                 random.randint(0, 255),
             )
-            print(f"Chosen random color (R,G,B): {rgb}")
-            await dev.async_set_light_color(rgb=rgb)
+            print(f"Chosen random color (R,G,B): {new_col}")
+            await dev.async_set_light_color(rgb=new_col.value)
             print("Color changed!")
 
     # Close the manager and logout from http_api
