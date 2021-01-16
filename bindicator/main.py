@@ -1,6 +1,4 @@
 import asyncio
-import os
-import pprint
 import random
 
 from meross_iot.http_api import MerossHttpClient
@@ -38,7 +36,7 @@ async def main(
             # Check the current RGB color
             current_color = dev.get_rgb_color()
             print(
-                f"Currently, device {dev.name} is set to color (RGB) = {current_color}"
+                f"Device {dev.name} set to RGB {current_color}"
             )
             # Randomly chose a new color
             rgb = (
