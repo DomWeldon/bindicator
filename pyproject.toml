@@ -8,6 +8,7 @@ authors = ["Dom Weldon <dom.weldon@gmail.com>"]
 python = "^3.8"
 meross-iot = "^0.4.0"
 pydantic = "^1.7.3"
+boto3 = "^1.16.56"
 
 [tool.poetry.dev-dependencies]
 bpython = "^0.20.1"
