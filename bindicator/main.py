@@ -4,8 +4,8 @@ import random
 from meross_iot.http_api import MerossHttpClient
 from meross_iot.manager import MerossManager
 
-from bindicator.config import config
 from bindicator import bins
+from bindicator.config import config
 
 
 async def main(
@@ -39,9 +39,7 @@ async def main(
             await dev.async_update()
             # Check the current RGB color
             current_color = dev.get_rgb_color()
-            print(
-                f"Device {dev.name} set to RGB {current_color}"
-            )
+            print(f"Device {dev.name} set to RGB {current_color}")
             # Randomly chose a new color
             rgb = (
                 random.randint(0, 255),
