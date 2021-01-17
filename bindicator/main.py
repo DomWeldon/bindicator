@@ -19,7 +19,6 @@ async def main(
 ):
     """Set the lights to the next bin colour"""
     # code smell but meh
-    raise Exception("Hello Sentry!")
     from bindicator import bins
 
     # Setup the HTTP client API from user-password

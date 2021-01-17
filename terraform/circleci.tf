@@ -15,6 +15,9 @@ locals {
     # bins
     BIN_DAY     = var.bin_day
     COUNCIL_URL = var.council_url
+    # meross dummy
+    MEROSS_EMAIL    = "dummy-value"
+    MEROSS_PASSWORD = "dummy-value"
   }
 }
 
