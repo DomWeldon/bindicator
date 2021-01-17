@@ -1,16 +1,27 @@
 import asyncio
 
+import sentry_sdk
 from meross_iot.http_api import MerossHttpClient
 from meross_iot.manager import MerossManager
+from sentry_sdk.integrations.aws_lambda import AwsLambdaIntegration
 
-from bindicator import bins
 from bindicator.config import config
+
+if config.SENTRY_DSN is not None:
+    sentry_sdk.init(
+        dsn=config.SENTRY_DSN,
+        integrations=[AwsLambdaIntegration()],
+    )
 
 
 async def main(
     email: str = config.MEROSS_EMAIL, password: str = config.MEROSS_PASSWORD
 ):
     """Set the lights to the next bin colour"""
+    # code smell but meh
+    raise Exception("Hello Sentry!")
+    from bindicator import bins
+
     # Setup the HTTP client API from user-password
     http_api_client = await MerossHttpClient.async_from_user_password(
         email=email, password=password
@@ -56,6 +67,8 @@ def handler(event=None, context=None):
 
 
 if __name__ == "__main__":
-    # On Windows + Python 3.8, you should uncomment the following
-    # asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    handler()
+    try:
+        handler()
+    except Exception as e:
+        # something went wrong in the above, send to sentry
+        sentry_sdk.capture_exception(e)

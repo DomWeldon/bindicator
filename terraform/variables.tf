@@ -74,3 +74,18 @@ variable "meross_password" {
 variable "meross_email" {
   type = string
 }
+
+variable "bin_day" {
+  description = "Day of the week bins are collected as CRON, e.g., Monday"
+  type        = string
+}
+
+variable "bin_day_eve" {
+  description = "Day of the week to run the bindicator on e.g., SUN"
+  type        = string
+}
+
+variable "council_url" {
+  description = "URL to query (Stockport Metropolitan Borough Council format)"
+  type        = string
+}

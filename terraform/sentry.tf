@@ -25,3 +25,7 @@ resource "sentry_key" "asgi" {
   project      = sentry_project.main.id
   name         = "${var.project_name} ASGI / ${var.environment_name}"
 }
+
+output "SENTRY_DSN" {
+  value = sentry_key.asgi.dsn_public
+}

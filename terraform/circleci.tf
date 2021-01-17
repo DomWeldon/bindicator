@@ -12,6 +12,9 @@ locals {
     "AWS_ROLE_ARN_${upper(var.environment_name)}" = aws_iam_role.ci.arn
     # preoject
     PROJECT_NAME = var.project_name
+    # bins
+    BIN_DAY     = var.bin_day
+    COUNCIL_URL = var.council_url
   }
 }
 

@@ -5,6 +5,7 @@ module "bindicator_lambda" {
   fn_name                   = var.fn_name
   fn_handler                = var.fn_handler
   lambda_source_bucket_name = "domweldon-bindicator-lambda-source-01"
+  fn_timeout                = 120
 
   environment_variables = [{
     # project
@@ -16,5 +17,8 @@ module "bindicator_lambda" {
     # meross
     MEROSS_EMAIL    = var.meross_email
     MEROSS_PASSWORD = var.meross_password
+    # bins
+    BIN_DAY     = var.bin_day
+    COUNCIL_URL = var.council_url
   }]
 }
