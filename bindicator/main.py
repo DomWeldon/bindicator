@@ -54,6 +54,7 @@ def handler(event=None, context=None):
     loop.run_until_complete(main())
     loop.close()
 
+
 if __name__ == "__main__":
     # On Windows + Python 3.8, you should uncomment the following
     # asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
