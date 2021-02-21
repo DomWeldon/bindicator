@@ -18,6 +18,7 @@ locals {
     # meross dummy
     MEROSS_EMAIL    = "dummy-value"
     MEROSS_PASSWORD = "dummy-value"
+    SOME_VALUE      = "SOME_VALUE"
   }
 }
 

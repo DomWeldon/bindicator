@@ -48,10 +48,24 @@ async def main(
             await dev.async_update()
             # Check the current RGB color
             current_color = dev.get_rgb_color()
+            if hasattr(dev, "get_luminance"):
+                luminance = dev.get_luminance()
+            else:
+                luminance = "not supported"
+            if hasattr(dev, "get_temperature"):
+                temperature = dev.get_temperature()
+            else:
+                temperature = "not supported"
+            set_luminance = 90
             print(f"Device {dev.name} set to RGB {current_color}")
+            print(f"Temperature is {temperature} luminance is {luminance}")
             # set to next bins colour
-            print(f"Chosen random color (R,G,B): {new_col}")
-            await dev.async_set_light_color(rgb=new_col.value)
+            print(f"Chosen new color (R,G,B): {new_col}")
+            await dev.async_set_light_color(
+                rgb=new_col.value,
+                luminance=set_luminance,
+                drop_on_overquota=False,  # fingers crossed?!
+            )
             print("Color changed!")
 
     # Close the manager and logout from http_api

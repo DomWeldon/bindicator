@@ -14,11 +14,11 @@ class Bins(enum.Enum):
     """Bin colours as decided over a beer in the kitchen"""
 
     # for paper
-    BLUE: typing.Tuple[int, int, int] = (99, 34, 147)
+    BLUE: typing.Tuple[int, int, int] = (10, 0, 255)
     # garden waste and food
     GREEN: typing.Tuple[int, int, int] = (0, 255, 0)
     # bottles and cans, lovely lovely cans
-    BROWN: typing.Tuple[int, int, int] = (255, 56, 0)
+    BROWN: typing.Tuple[int, int, int] = (255, 22, 0)
     # non-recyclable waste, using white as black not possible when on
     BLACK: typing.Tuple[int, int, int] = (255, 0, 255)
 
@@ -66,9 +66,12 @@ COLLECTIONS_THIS_WEEK = {
     k for k, v in NEXT_COLLECTION_DATES.items() if v == NEXT_BIN_DAY
 }
 print("collections this week", COLLECTIONS_THIS_WEEK)
+
 # this is messy - I think there may also be a third option of three bins?
 NEXT_BINS = (
     (COLLECTIONS_THIS_WEEK.pop(), COLLECTIONS_THIS_WEEK.pop())
     if len(COLLECTIONS_THIS_WEEK) > 1
     else ((b := COLLECTIONS_THIS_WEEK.pop()), b)
 )
+
+# NEXT_BINS = (Bins.BLACK, Bins.GREEN)
